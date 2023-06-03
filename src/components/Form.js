@@ -18,6 +18,10 @@ export default function Form() {
         dispatch(addItem(inputs))
     }
 
+    const clearForm = () => {
+        setInputs("")
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <label>Album Name:
@@ -52,7 +56,9 @@ export default function Form() {
                     onChange={handleChange}
                 />
             </label>
-            <input type="submit" />
+            <button type="submit">Add Item</button>
+            <button type="button"
+              onClick={clearForm}>Clear Form</button>
         </form>
     )
 }
