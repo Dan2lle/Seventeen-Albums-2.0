@@ -3,9 +3,6 @@ import React from 'react';
 export default function Home() {
     return (
         <div>
-            {/* <div>
-                <Navbar />
-            </div> */}
             <h1>Seventeen albums</h1>
             <h2>Please go to the main page to enter your favorite albums!</h2>
             {/* <button onClick={() => dispatch(increment(1))}>More!</button>
