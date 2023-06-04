@@ -17,3 +17,15 @@ export const removeItem = (album) => {
         payload: album
     }
 }
+
+export const sortByName = () => {
+    return {
+        type: 'SORT_NAME'
+    }
+}
+
+export const sortByPrice = () => {
+    return {
+        type: 'SORT_PRICE'
+    }
+}

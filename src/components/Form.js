@@ -3,6 +3,7 @@ import { addItem } from "../actions";
 import { useDispatch } from 'react-redux';
 import { Button } from "./styles/Button.styled";
 import './Form.css';
+import { ButtonContainer } from "./styles/ButtonContainer.styled";
 
 export default function Form() {
     const [inputs, setInputs] = useState({});
@@ -66,9 +67,11 @@ export default function Form() {
                         />
                     </label>
                 </div>
-                <Button type="submit">Add Item</Button>
-                <Button type="button"
-                onClick={clearForm}>Clear Form</Button>
+                <ButtonContainer>
+                    <Button type="submit">Add Item</Button>
+                    <Button type="button"
+                    onClick={clearForm}>Clear Form</Button>
+                </ButtonContainer>
             </form>
         </div>
     )

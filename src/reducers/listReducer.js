@@ -43,6 +43,16 @@ const listReducer = (state = initialState, action) => {
               ...state,
               list: state.list.filter(item => item.album !== action.payload)
             }
+          case 'SORT_NAME':
+            return {
+              ...state,
+              list: state.list.slice().sort((a, b) => a.album.localeCompare(b.album))
+            }
+          case 'SORT_PRICE':
+            return {
+              ...state,
+              list: state.list.slice().sort((a, b) => a.price.localeCompare(b.price))
+            }
         default:
             return state;
     }
