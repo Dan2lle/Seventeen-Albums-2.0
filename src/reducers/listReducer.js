@@ -35,7 +35,9 @@ const listReducer = (state = initialState, action) => {
                 list: [...state.list, action.payload] // new todos array
                }; //add to list
         case 'CLEAR':
-            return state = [];
+            return {
+              list: []
+            };
         default:
             return state;
     }

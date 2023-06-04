@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addItem } from "../actions";
+import { addItem, clear } from "../actions";
 import { useDispatch } from 'react-redux';
 import { Button } from "./styles/Button.styled";
 import './Form.css';
@@ -16,12 +16,15 @@ export default function Form() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(inputs);
         dispatch(addItem(inputs))
     }
 
     const clearForm = () => {
         setInputs("")
+    }
+
+    const clearList = () => {
+        dispatch(clear())
     }
 
     return (
@@ -70,6 +73,8 @@ export default function Form() {
                 <Button type="submit">Add Item</Button>
                 <Button type="button"
                 onClick={clearForm}>Clear Form</Button>
+                <Button type="button"
+                onClick={clearList}>Clear List</Button>
             </form>
         </div>
     )
