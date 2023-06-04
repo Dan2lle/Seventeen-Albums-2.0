@@ -18,6 +18,7 @@
 .li-item {
     display:inline-block;
     vertical-align:middle;
+    text-align: center;
     width:45%;
     background-color: snow;
     margin: 10px 10px 10px 10px;

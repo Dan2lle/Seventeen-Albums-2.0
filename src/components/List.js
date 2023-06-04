@@ -4,7 +4,8 @@ import './List.css'
 import { ListButton } from './styles/ListButton.styled';
 import Modal from './Modal';
 import { useState } from 'react';
-import { removeItem } from '../actions';
+import { removeItem, clear } from '../actions';
+import { Button } from './styles/Button.styled';
 
 export default function List() {
     const list = useSelector(state => state.list)
@@ -15,13 +16,18 @@ export default function List() {
         dispatch(removeItem(album))
     }
 
+    const clearList = () => {
+        dispatch(clear())
+    }
+
     return (
         <div className='album-list'>
             
             <h2 className='list-header'>Seventeen Album List</h2>
-            
-            {list.map((item) => (
+            <Button type="button" style={{margin:"0 auto", display: "block", marginBottom: "10px"}} onClick={clearList}>Clear List</Button>
 
+            <div style={{display:"flex", justifyContent: "center", flexWrap: "wrap"}}>
+            {list.map((item) => (
                 <div className='li-item' key={item.description}>
                     Album Name: {item.album} 
                     <br></br>
@@ -40,7 +46,8 @@ export default function List() {
                         </div>
                     </div>
                 </div>
-            ))}
+                ))}
+            </div>
         </div>
       );
 }
