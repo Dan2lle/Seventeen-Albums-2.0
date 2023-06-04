@@ -1,13 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './List.css'
 import { ListButton } from './styles/ListButton.styled';
 import Modal from './Modal';
 import { useState } from 'react';
+import { removeItem } from '../actions';
 
 export default function List() {
     const list = useSelector(state => state.list)
     const [isOpen, setIsOpen] = useState(false)
+    const dispatch = useDispatch()
+
+    let removeHandler = (album) => {
+        dispatch(removeItem(album))
+    }
+
     return (
         <div className='album-list'>
             
@@ -21,6 +28,7 @@ export default function List() {
                     Album Cover: <img className='album-cover' src={item.image} alt='album cover'/>
                     <div>
                         <ListButton onClick={() => setIsOpen(true)}>View Album Details</ListButton>
+                        <ListButton onClick={() => removeHandler(item.album)}>Delete Album</ListButton>
                         <div>
                             <Modal open={isOpen} onClose={()=>setIsOpen(false)}>
                                 <div>

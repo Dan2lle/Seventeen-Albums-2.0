@@ -33,11 +33,16 @@ const listReducer = (state = initialState, action) => {
             return { // returning a copy of orignal state 
                 ...state, //spreading the original state
                 list: [...state.list, action.payload] // new todos array
-               }; //add to list
+              }; //add to list
         case 'CLEAR':
             return {
               list: []
             };
+        case 'REMOVE_ITEM':
+            return {
+              ...state,
+              list: state.list.filter(item => item.album !== action.payload)
+            }
         default:
             return state;
     }

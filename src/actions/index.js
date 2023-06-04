@@ -10,3 +10,10 @@ export const clear = () => {
         type: 'CLEAR'
     }
 }
+
+export const removeItem = (album) => {
+    return {
+        type: 'REMOVE_ITEM',
+        payload: album
+    }
+}
