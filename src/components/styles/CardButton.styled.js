@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ListButton = styled.button`
+export const CardButton = styled.button`
     background-color: #8EACD0;
     border: none;
     color: white;
@@ -9,7 +9,7 @@ export const ListButton = styled.button`
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 3px;
+    margin: 20px 5px 20px 5px;
     transition-duration: 0.5s;
     cursor: pointer;
     min-width: 110px;

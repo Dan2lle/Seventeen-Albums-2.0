@@ -1,21 +1,15 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './List.css'
-import { ListButton } from './styles/ListButton.styled';
-import Modal from './Modal';
-import { useState } from 'react';
-import { removeItem, clear, sortByName, sortByPrice } from '../actions';
+import { 
+    clear, sortByName, sortByPrice } from '../actions';
 import { Button } from './styles/Button.styled';
 import { ButtonContainer } from './styles/ButtonContainer.styled';
+import Card from './Card';
 
 export default function List() {
     const list = useSelector(state => state.list)
-    const [isOpen, setIsOpen] = useState(false)
     const dispatch = useDispatch()
-
-    let removeHandler = (album) => {
-        dispatch(removeItem(album))
-    }
 
     const clearList = () => {
         dispatch(clear())
@@ -42,24 +36,7 @@ export default function List() {
             
             <div style={{display:"flex", justifyContent: "center", flexWrap: "wrap"}}>
             {list.map((item) => (
-                <div className='li-item' key={item.description}>
-                    Album Name: {item.album} 
-                    <br></br>
-                    Album Cover: <img className='album-cover' src={item.image} alt='album cover'/>
-                    <div>
-                        <ListButton onClick={() => setIsOpen(true)}>View Album Details</ListButton>
-                        <ListButton onClick={() => removeHandler(item.album)}>Delete Album</ListButton>
-                        <div>
-                            <Modal open={isOpen} onClose={()=>setIsOpen(false)}>
-                                <div>
-                                    Description: {item.description} 
-                                    <br></br>
-                                    Price: {item.price} 
-                                </div>
-                            </Modal>
-                        </div>
-                    </div>
-                </div>
+                <Card key={item.description} item={item} />
                 ))}
             </div>
         </div>
