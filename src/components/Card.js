@@ -16,18 +16,23 @@ export default function Card(props) {
 
     return (
         <div className='li-item' key={props.item.description}>
-            Album Name: {props.item.album} 
             <br></br>
-            Album Cover: <img className='album-cover' src={props.item.image} alt='album cover'/>
+            <span style={{ fontWeight: 'bold' }}>Album Name</span>: {props.item.album} 
+            <br></br>
+            <br></br>
+            <span style={{ fontWeight: 'bold' }}>Album Cover</span>: <img className='album-cover' src={props.item.image} alt='album cover'/>
             <div>
                 <CardButton onClick={() => setIsOpen(true)}>View Album Details</CardButton>
                 <CardButton onClick={() => removeHandler(props.item.album)}>Delete Album</CardButton>
                 <div>
                     <Modal open={isOpen} onClose={()=>setIsOpen(false)}>
                         <div>
-                            Description: {props.item.description} 
+                            <span style={{ fontWeight: 'bold' }}>{props.item.album} Details</span>
                             <br></br>
-                            Price: ${props.item.price} 
+                            <br></br>
+                            <span style={{ fontWeight: 'bold' }}>Description</span>: {props.item.description} 
+                            <br></br>
+                            <span style={{ fontWeight: 'bold' }}>Price</span>: ${props.item.price} 
                         </div>
                     </Modal>
                 </div>

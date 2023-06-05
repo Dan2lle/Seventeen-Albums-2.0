@@ -33,6 +33,7 @@ export default function List() {
                 <Button type="button" onClick={sortListByName}>Sort List By Name</Button>
                 <Button type="button" onClick={sortListByPrice}>Sort List By Price</Button>
             </ButtonContainer>
+            <br></br>
             
             <div style={{display:"flex", justifyContent: "center", flexWrap: "wrap"}}>
             {list.map((item) => (

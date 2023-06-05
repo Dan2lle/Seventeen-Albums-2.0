@@ -32,8 +32,8 @@ export default function Modal({open, children, onClose}) {
 
             </div>
             <div style={MODAL_STYLES}>
-                <CardButton onClick={onClose}>Close</CardButton>
                 {children}
+                <CardButton onClick={onClose}>Close</CardButton>
             </div>
         </>
         
