@@ -29,3 +29,10 @@ export const sortByPrice = () => {
         type: 'SORT_PRICE'
     }
 }
+
+export const setItems = (albums) => {
+    return {
+        type: 'SET_ITEMS',
+        payload: albums
+    }
+}
