@@ -42,15 +42,17 @@ router.get('/', function(req, res, next) {
 router.get('/:albumId', function(req, res, next) {
   const foundAlbum = albums.find(user => user.id === req.params.albumId);
   
-  if (!foundAlbum) return res.status(404).send({ message: 'User not found' });
+  if (!foundAlbum) return res.status(404).send({ message: 'Album not found' });
 
   return res.send(foundAlbum);
 });
 
 router.post('/', function (req, res, next) {
+  console.log("post")
+  console.log(req.body)
   idNumber ++
   if (!req.body.album) {
-    return res.status(400).send({ message: 'User must have a name!' })
+    return res.status(400).send({ message: 'Album must have a name!' })
   }
   const album = { id: idNumber.toString(), name: req.body.album, description: req.body.description, price: req.body.price, image: req.body.image};
   albums.push(album);

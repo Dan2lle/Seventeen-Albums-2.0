@@ -1,17 +1,27 @@
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import './List.css' 
 import { CardButton } from './styles/CardButton.styled';
 import Modal from './Modal';
 import { useState } from 'react';
-import { removeItem } from '../actions';
+// import { removeItem } from '../actions';
+import axios from 'axios';
 
 
 export default function Card(props) {
     const [isOpen, setIsOpen] = useState(false)
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    let removeHandler = (album) => {
-        dispatch(removeItem(album))
+    const baseURL = "http://localhost:3002/albums/"
+
+    // let removeHandler = (album) => {
+    //     dispatch(removeItem(album))
+    // }
+
+    const removeHandler = (id) => {
+        console.log(id)
+        axios.delete(`${baseURL}/${id}`)
+        .then(window.location.reload())
+        .catch(err => console.log(err))
     }
 
     return (
@@ -23,7 +33,7 @@ export default function Card(props) {
             <span style={{ fontWeight: 'bold' }}>Album Cover</span>: <img className='album-cover' src={props.item.image} alt='album cover'/>
             <div>
                 <CardButton onClick={() => setIsOpen(true)}>View Album Details</CardButton>
-                <CardButton onClick={() => removeHandler(props.item.album)}>Delete Album</CardButton>
+                <CardButton onClick={() => removeHandler(props.item.id)}>Delete Album</CardButton>
                 <div>
                     <Modal open={isOpen} onClose={()=>setIsOpen(false)}>
                         <div>
