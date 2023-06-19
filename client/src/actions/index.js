@@ -15,32 +15,28 @@ export const clear = () => {
 }
 
 export const removeItem = (id) => async (dispatch) => {
-    const response = await api.delete(`/albums/${id}`)
+    await api.delete(`/albums/${id}`)
     dispatch({
         type: 'REMOVE_ITEM',
         payload: id
     })
 }
 
-
-export const sortByName = () => {
-    return {
-        type: 'SORT_NAME'
-    }
+export const sortByName = () => async (dispatch) => {
+    const response = await api.get("/albums/?sortBy=name")
+    dispatch({
+        type: 'FETCH_ITEMS',
+        payload: response.data
+    })
 }
 
-export const sortByPrice = () => {
-    return {
-        type: 'SORT_PRICE'
-    }
-}
-
-export const setItems = (albums) => {
-    return {
-        type: 'SET_ITEMS',
-        payload: albums
-    }
-}
+export const sortByPrice = () => async (dispatch) => {
+    const response = await api.get("/albums/?sortBy=price")
+    dispatch({
+        type: 'FETCH_ITEMS',
+        payload: response.data
+    })
+} 
 
 export const fetchItems = () => async (dispatch) => {
     const response = await api.get("/albums")

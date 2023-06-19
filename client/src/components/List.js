@@ -22,6 +22,10 @@ export default function List() {
         dispatch(sortByPrice())
     }
 
+    const fetchList = () => {
+        dispatch(fetchItems())
+    }
+
     useEffect(() => {
         dispatch(fetchItems());
     }, [])
@@ -35,6 +39,7 @@ export default function List() {
                 <Button type="button" onClick={clearList}>Clear List</Button>
                 <Button type="button" onClick={sortListByName}>Sort List By Name</Button>
                 <Button type="button" onClick={sortListByPrice}>Sort List By Price</Button>
+                <Button type="button" onClick={fetchList}>Show Full List</Button>
             </ButtonContainer>
             <br></br>
             
