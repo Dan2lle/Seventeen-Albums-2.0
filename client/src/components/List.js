@@ -40,7 +40,7 @@ export default function List() {
             
             <div style={{display:"flex", justifyContent: "center", flexWrap: "wrap"}}>
             {list.map((item) => (
-                <Card key={item.description} item={item} />
+                <Card key={item.id} item={item} />
                 ))}
             </div>
         </div>

@@ -1,29 +1,18 @@
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './List.css' 
 import { CardButton } from './styles/CardButton.styled';
 import Modal from './Modal';
 import { useState } from 'react';
-// import { removeItem } from '../actions';
-import axios from 'axios';
-
+import { removeItem } from '../actions';
 
 export default function Card(props) {
     const [isOpen, setIsOpen] = useState(false)
-    // const dispatch = useDispatch()
-
-    const baseURL = "http://localhost:3002/albums/"
-
-    // let removeHandler = (album) => {
-    //     dispatch(removeItem(album))
-    // }
+    const dispatch = useDispatch()
 
     const removeHandler = (id) => {
-        console.log(id)
-        axios.delete(`${baseURL}/${id}`)
-        .then(window.location.reload())
-        .catch(err => console.log(err))
+        dispatch(removeItem(id))
     }
-
+    
     return (
         <div className='li-item' key={props.item.description}>
             <br></br>

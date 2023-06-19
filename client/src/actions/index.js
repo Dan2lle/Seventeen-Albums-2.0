@@ -2,7 +2,6 @@ import api from "../apis/api"
 
 export const addItem = (inputs) => async (dispatch) => {
     const response = await api.post("/albums", inputs)
-    console.log(response.data)
     dispatch({
         type: 'ADD_ITEM',
         payload: response.data
@@ -15,12 +14,14 @@ export const clear = () => {
     }
 }
 
-export const removeItem = (album) => {
-    return {
+export const removeItem = (id) => async (dispatch) => {
+    const response = await api.delete(`/albums/${id}`)
+    dispatch({
         type: 'REMOVE_ITEM',
-        payload: album
-    }
+        payload: id
+    })
 }
+
 
 export const sortByName = () => {
     return {

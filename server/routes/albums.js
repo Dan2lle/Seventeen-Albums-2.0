@@ -54,7 +54,7 @@ router.post('/', function (req, res, next) {
   if (!req.body.album) {
     return res.status(400).send({ message: 'Album must have a name!' })
   }
-  const album = { id: idNumber.toString(), name: req.body.album, description: req.body.description, price: req.body.price, image: req.body.image};
+  const album = { id: idNumber.toString(), album: req.body.album, description: req.body.description, price: req.body.price, image: req.body.image};
   albums.push(album);
   res.statusCode = 201;
   return res.send(album);
