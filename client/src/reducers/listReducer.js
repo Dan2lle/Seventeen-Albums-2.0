@@ -33,6 +33,11 @@ const listReducer = (state = initialState, action) => {
               ...state,
               list: action.payload
             }
+          case 'FETCH_ITEMS': 
+            return {
+              ...state,
+              list: action.payload
+            }
         default:
             return state;
     }

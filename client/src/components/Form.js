@@ -1,16 +1,13 @@
 import { useState } from "react";
-// import { addItem } from "../actions";
-// import { useDispatch } from 'react-redux';
+import { addItem } from "../actions";
+import { useDispatch } from 'react-redux';
 import { Button } from "./styles/Button.styled";
 import './Form.css';
 import { ButtonContainer } from "./styles/ButtonContainer.styled";
-import axios from "axios";
 
 export default function Form() {
     const [inputs, setInputs] = useState({});
-    // const dispatch = useDispatch()
-
-    const baseURL = "http://localhost:3002/albums/"
+    const dispatch = useDispatch()
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -20,11 +17,7 @@ export default function Form() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // dispatch(addItem(inputs))
-        console.log(inputs)
-        axios.post(baseURL, inputs)
-        .then(window.location.reload())
-        .catch(err => console.log(err))
+        dispatch(addItem(inputs))
     }
 
     const clearForm = () => {

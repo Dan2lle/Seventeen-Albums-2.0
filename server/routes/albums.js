@@ -56,7 +56,8 @@ router.post('/', function (req, res, next) {
   }
   const album = { id: idNumber.toString(), name: req.body.album, description: req.body.description, price: req.body.price, image: req.body.image};
   albums.push(album);
-  return res.send(albums);
+  res.statusCode = 201;
+  return res.send(album);
 });
 
 router.delete('/:albumId', function(req, res, next) {
@@ -69,7 +70,7 @@ router.delete('/:albumId', function(req, res, next) {
       ++i
     }
   }
-  return res.send(200);
+  return res.sendStatus(200);
 });
 
 module.exports = router;

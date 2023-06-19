@@ -2,17 +2,14 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './List.css'
 import { 
-    clear, sortByName, sortByPrice, setItems } from '../actions';
+    clear, sortByName, sortByPrice, fetchItems } from '../actions';
 import { Button } from './styles/Button.styled';
 import { ButtonContainer } from './styles/ButtonContainer.styled';
 import Card from './Card';
-import axios from 'axios';
 
 export default function List() {
     const list = useSelector(state => state.list)
     const dispatch = useDispatch()
-    const baseURL = "http://localhost:3002/albums/"
-
     const clearList = () => {
         dispatch(clear())
     }
@@ -25,15 +22,8 @@ export default function List() {
         dispatch(sortByPrice())
     }
 
-    const fetchAlbums = async() => {
-        const response = await axios.get(baseURL).catch((err) => {
-            console.log("Err", err)
-        })
-        dispatch(setItems(response.data))
-    }
-
     useEffect(() => {
-        fetchAlbums();
+        dispatch(fetchItems());
     }, [])
 
     return (

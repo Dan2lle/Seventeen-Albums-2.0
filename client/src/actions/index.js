@@ -1,8 +1,12 @@
-export const addItem = (inputs) => {
-    return {
+import api from "../apis/api"
+
+export const addItem = (inputs) => async (dispatch) => {
+    const response = await api.post("/albums", inputs)
+    console.log(response.data)
+    dispatch({
         type: 'ADD_ITEM',
-        payload: inputs
-    }
+        payload: response.data
+    })
 }
 
 export const clear = () => {
@@ -36,3 +40,11 @@ export const setItems = (albums) => {
         payload: albums
     }
 }
+
+export const fetchItems = () => async (dispatch) => {
+    const response = await api.get("/albums")
+    dispatch({
+        type: 'FETCH_ITEMS',
+        payload: response.data
+    })
+} 
