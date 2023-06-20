@@ -68,7 +68,7 @@ export default function Form() {
                     </label>
                 </div>
                 <ButtonContainer>
-                    <Button type="submit">Add Item</Button>
+                    <Button type="submit">Add Album</Button>
                     <Button type="button"
                     onClick={clearForm}>Clear Form</Button>
                 </ButtonContainer>
