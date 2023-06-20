@@ -44,7 +44,7 @@ export default function Card(props) {
                 <div>
                     <Modal open={isOpen} onClose={()=>setIsOpen(false)}>
                         <div>
-                            <span style={{ fontWeight: 'bold' }}>{album.album} Details</span>
+                            <span style={{ fontWeight: 'bold' }}> &lt; {album.album} &gt; Details</span>
                             <br></br>
                             <br></br>
                             <span style={{ fontWeight: 'bold' }}>Description</span>: {album.description} 
