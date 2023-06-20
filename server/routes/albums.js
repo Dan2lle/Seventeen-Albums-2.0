@@ -47,7 +47,7 @@ router.get('/', function(req, res, next) {
     }
   }
 
-  res.send(albums);
+  res.status(200).send(albums);
 });
 
 router.get('/:albumId', function(req, res, next) {
@@ -55,7 +55,23 @@ router.get('/:albumId', function(req, res, next) {
   
   if (!foundAlbum) return res.status(404).send({ message: 'Album not found' });
 
-  return res.send(foundAlbum);
+  return res.status(200).send(foundAlbum);
+});
+
+router.put('/:albumId', function(req, res, next) {
+  let i = 0;
+  while (i < albums.length) {
+    if (albums[i].id === req.params.albumId) {
+      albums[i].album = req.body.album
+      albums[i].description = req.body.description
+      albums[i].price = req.body.price
+      albums[i].image = req.body.image
+      return res.status(200).send(albums[i]);
+    } else {
+      ++i
+    }
+  }
+  return res.status(404).send({ message: 'Album not found'})
 });
 
 router.post('/', function (req, res, next) {
@@ -65,8 +81,7 @@ router.post('/', function (req, res, next) {
   }
   const album = { id: idNumber.toString(), album: req.body.album, description: req.body.description, price: req.body.price, image: req.body.image};
   albums.push(album);
-  res.statusCode = 201;
-  return res.send(album);
+  return res.status(201).send(album);
 });
 
 router.delete('/:albumId', function(req, res, next) {
@@ -74,12 +89,12 @@ router.delete('/:albumId', function(req, res, next) {
   while (i < albums.length) {
     if (albums[i].id === req.params.albumId) {
       albums.splice(i, 1)
-      break
+      return res.sendStatus(204);
     } else {
       ++i
     }
   }
-  return res.sendStatus(200);
+  return res.status(404).send({ message: 'Album not found'})
 });
 
 module.exports = router;

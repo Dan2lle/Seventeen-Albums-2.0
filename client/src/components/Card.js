@@ -5,6 +5,7 @@ import Modal from './Modal';
 import { useState } from 'react';
 import { removeItem } from '../actions';
 import axios from 'axios';
+import { ButtonLink } from './navbar/NavBarElements';
 
 export default function Card(props) {
     const [isOpen, setIsOpen] = useState(false)
@@ -33,6 +34,11 @@ export default function Card(props) {
             <br></br>
             <span style={{ fontWeight: 'bold' }}>Album Cover</span>: <img className='album-cover' src={props.item.image} alt='album cover'/>
             <div>
+                <ButtonLink to={`/update/${props.item.id}`}>
+                    <CardButton>
+                        Update Album
+                    </CardButton>
+                </ButtonLink>
                 <CardButton onClick={() => {setIsOpen(true); fetchAlbum(props.item.id)}}>View Album Details</CardButton>
                 <CardButton onClick={() => removeHandler(props.item.id)}>Delete Album</CardButton>
                 <div>

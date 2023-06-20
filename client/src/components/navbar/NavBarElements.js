@@ -25,6 +25,16 @@ export const NavLink = styled(Link)`
     color: #4d4dff;
   }
 `;
+
+export const ButtonLink = styled(Link)`
+  color: #808080;
+  text-decoration: none;
+  height: 100%;
+  cursor: pointer;
+  &.active {
+    color: #4d4dff;
+  }
+`;
  
 export const Bars = styled(FaBars)`
   display: none;

@@ -1,18 +1,3 @@
-// import Navbar from "../components/navbar"
-
-// export default function About() {
-//     return (
-//         <div>
-//             <div>
-//                 <Navbar />
-//             </div>
-//             <h1>About</h1>
-//             <h2>More info about this website and Seventeen</h2>
-//         </div>
-//     )
-
-// } 
-
 import React from "react";
  
 const About = () => {

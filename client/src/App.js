@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route }
 import Home from './pages';
 import Main from './pages/main'
 import About from './pages/about';
+import Update from './pages/update';
  
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route exact path='/' element={<Home />} />
                 <Route path='/main' element={<Main />} />
                 <Route path='/about' element={<About />} />
+                <Route path='/update/:id' element={<Update />} />
             </Routes>
         </Router>
     );
