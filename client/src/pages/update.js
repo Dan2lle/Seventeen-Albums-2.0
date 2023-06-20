@@ -108,7 +108,7 @@ const Update = () => {
                     </label>
                 </div>
                 <ButtonContainer>
-                    <Button type="submit">Add Item</Button>
+                    <Button type="submit">Update Item</Button>
                 </ButtonContainer>
             </form>
         </div>
