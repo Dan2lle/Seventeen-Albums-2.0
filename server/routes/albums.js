@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var Album = require('../model/Album');
 
 let albums = [
   {
@@ -36,18 +37,26 @@ let idNumber = 4
 
 /* GET users listing. */
 /* referenced from: https://levelup.gitconnected.com/node-js-filtering-sorting-and-pagination-50ce6c90d0ad */
-router.get('/', function(req, res, next) {
-  if(req.query.sortBy) {
-    if (req.query.sortBy === 'name') {
-      console.log('sort by name')
-      albums.sort((a, b) => a.album.localeCompare(b.album))
-    } else if ((req.query.sortBy === 'price')) {
-      console.log('sort by price')
-      albums.sort((a, b) => a.price.localeCompare(b.price))
+router.get('/', async(req, res, next) => {
+  try {
+    const albumData = await Album.find({})
+    // console.log(albumData)
+    // res.json(albumData)
+    console.log(albumData)
+    if(req.query.sortBy) {
+      if (req.query.sortBy === 'name') {
+        console.log('sort by name')
+        albumData.sort((a, b) => a.album.localeCompare(b.album))
+      } else if ((req.query.sortBy === 'price')) {
+        console.log('sort by price')
+        albumData.sort((a, b) => a.price.localeCompare(b.price))
+      }
     }
-  }
-
-  res.status(200).send(albums);
+    console.log('no sort')
+    res.status(200).send(albumData);
+  } catch (err) {
+    console.log(err)
+  }  
 });
 
 router.get('/:albumId', function(req, res, next) {
