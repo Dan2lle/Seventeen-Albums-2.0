@@ -32,7 +32,7 @@ export default function List() {
             <h2 className='list-header'>Seventeen Album List</h2>
             <h4 className='list-header'>Current # of the albums: {list.length}</h4>
             <ButtonContainer>
-                <Button type="button" onClick={clearList}>Clear List</Button>
+                {/* <Button type="button" onClick={clearList}>Clear List</Button> */}
                 <Button type="button" onClick={sortListByName}>Sort List By Name</Button>
                 <Button type="button" onClick={sortListByPrice}>Sort List By Price</Button>
             </ButtonContainer>
