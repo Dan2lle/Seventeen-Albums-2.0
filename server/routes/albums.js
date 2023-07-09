@@ -33,16 +33,11 @@ let albums = [
   }
 ]
 
-let idNumber = 4
-
 /* GET users listing. */
 /* referenced from: https://levelup.gitconnected.com/node-js-filtering-sorting-and-pagination-50ce6c90d0ad */
-router.get('/', async(req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const albumData = await Album.find({})
-    // console.log(albumData)
-    // res.json(albumData)
-    console.log(albumData)
     if(req.query.sortBy) {
       if (req.query.sortBy === 'name') {
         console.log('sort by name')
@@ -59,8 +54,8 @@ router.get('/', async(req, res, next) => {
   }  
 });
 
-router.get('/:albumId', function(req, res, next) {
-  const foundAlbum = albums.find(user => user.id === req.params.albumId);
+router.get('/:albumId', async (req, res, next) => {
+  const foundAlbum = await Album.findById(req.params.albumId).exec();
   
   if (!foundAlbum) return res.status(404).send({ message: 'Album not found' });
 
@@ -83,27 +78,35 @@ router.put('/:albumId', function(req, res, next) {
   return res.status(404).send({ message: 'Album not found'})
 });
 
-router.post('/', function (req, res, next) {
-  idNumber ++
+/* referenced from: https://www.youtube.com/watch?v=vjf774RKrLc&list=WL&index=29 */
+router.post('/', async (req, res, next) => {
   if (!req.body.album) {
     return res.status(400).send({ message: 'Album must have a name!' })
   }
-  const album = { id: idNumber.toString(), album: req.body.album, description: req.body.description, price: req.body.price, image: req.body.image};
-  albums.push(album);
-  return res.status(201).send(album);
+  const album = new Album({
+    album: req.body.album, 
+    description: req.body.description, 
+    title: req.body.title, 
+    price: req.body.price, 
+    released: req.body.released, 
+    image: req.body.image
+  })
+
+  try {
+    const savedAlbum = await album.save()
+    res.status(201).json(savedAlbum)
+  } catch (err) {
+    res.status(500).json({message: err})
+  }
 });
 
-router.delete('/:albumId', function(req, res, next) {
-  let i = 0;
-  while (i < albums.length) {
-    if (albums[i].id === req.params.albumId) {
-      albums.splice(i, 1)
-      return res.sendStatus(204);
-    } else {
-      ++i
-    }
+router.delete('/:albumId', async (req, res, next) => {
+  try {
+    await Album.deleteOne({ _id: req.params.albumId })
+    res.sendStatus(204)
+  } catch (err) {
+    res.status(404).json({ message: err})
   }
-  return res.status(404).send({ message: 'Album not found'})
 });
 
 module.exports = router;

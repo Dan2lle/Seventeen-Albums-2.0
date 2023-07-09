@@ -48,11 +48,31 @@ export default function Form() {
                     </label>
                 </div>
                 <div>
+                    <label>Title Song:
+                        <input 
+                            type="text" 
+                            name="title" 
+                            value={inputs.title || ""} 
+                            onChange={handleChange}
+                        />
+                    </label>
+                </div>
+                <div>
                     <label>Price:
                         <input 
                             type="number" 
                             name="price" 
                             value={inputs.price || ""} 
+                            onChange={handleChange}
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>Year of Release:
+                        <input 
+                            type="text" 
+                            name="released" 
+                            value={inputs.released || ""} 
                             onChange={handleChange}
                         />
                     </label>

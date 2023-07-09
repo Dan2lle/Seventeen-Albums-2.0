@@ -16,7 +16,7 @@ const listReducer = (state = initialState, action) => {
         case 'REMOVE_ITEM':
             return {
               ...state,
-              list: state.list.filter(item => item.id !== action.payload)
+              list: state.list.filter(item => item._id !== action.payload)
             }
           case 'SORT_NAME':
             return {

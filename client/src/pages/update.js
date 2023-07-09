@@ -11,8 +11,10 @@ const Update = () => {
     const {id} = useParams()
     const [values, setValues] = useState({
         album: '',
+        title: '',
         description: '',
         price: '',
+        released: '',
         image: ''
     })
     const baseURL = "http://localhost:3002"
@@ -23,8 +25,10 @@ const Update = () => {
             setValues({
                 ...values, 
                 album: res.data.album, 
+                title: res.data.title,
                 description: res.data.description,
                 price: res.data.price,
+                released: res.data.released,
                 image: res.data.image
             })
         }).catch(
@@ -78,6 +82,21 @@ const Update = () => {
                     </label>
                 </div>
                 <div>
+                    <label>Title Song:
+                        <input 
+                            type="text" 
+                            name="title" 
+                            value={values.title || ""} 
+                            onChange={
+                                e => setValues({
+                                    ...values,
+                                    title: e.target.value
+                                })
+                            }
+                        />
+                    </label>
+                </div>
+                <div>
                     <label>Price:
                         <input 
                             type="number" 
@@ -87,6 +106,21 @@ const Update = () => {
                                 e => setValues({
                                     ...values, 
                                     price: e.target.value
+                                })
+                            }
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>Year of Release:
+                        <input 
+                            type="text" 
+                            name="released" 
+                            value={values.released || ""} 
+                            onChange={
+                                e => setValues({
+                                    ...values,
+                                    released: e.target.value
                                 })
                             }
                         />

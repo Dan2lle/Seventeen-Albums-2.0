@@ -22,10 +22,6 @@ export default function List() {
         dispatch(sortByPrice())
     }
 
-    const fetchList = () => {
-        dispatch(fetchItems())
-    }
-
     useEffect(() => {
         dispatch(fetchItems());
     }, [])
@@ -39,13 +35,12 @@ export default function List() {
                 <Button type="button" onClick={clearList}>Clear List</Button>
                 <Button type="button" onClick={sortListByName}>Sort List By Name</Button>
                 <Button type="button" onClick={sortListByPrice}>Sort List By Price</Button>
-                {/* <Button type="button" onClick={fetchList}>Show Full List</Button> */}
             </ButtonContainer>
             <br></br>
             
             <div style={{display:"flex", justifyContent: "center", flexWrap: "wrap"}}>
             {list.map((item) => (
-                <Card key={item.id} item={item} />
+                <Card key={item._id} item={item} />
                 ))}
             </div>
         </div>
