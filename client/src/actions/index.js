@@ -22,24 +22,36 @@ export const removeItem = (id) => async (dispatch) => {
     })
 }
 
-export const sortByName = () => async (dispatch) => {
-    const response = await api.get("/albums/?sortBy=name")
+export const sortByName = (page) => async (dispatch) => {
+    const response = await api.get(`/albums/?sortBy=name`)
+    // const response = await api.get(`/albums/?sortBy=name&page=${page}`)
     dispatch({
         type: 'FETCH_ITEMS',
         payload: response.data
     })
 }
 
-export const sortByPrice = () => async (dispatch) => {
-    const response = await api.get("/albums/?sortBy=price")
+export const sortByPrice = (page) => async (dispatch) => {
+    const response = await api.get(`/albums/?sortBy=price`)
+    // const response = await api.get(`/albums/?sortBy=price&page=${page}`)
     dispatch({
         type: 'FETCH_ITEMS',
         payload: response.data
     })
 } 
 
-export const fetchItems = () => async (dispatch) => {
-    const response = await api.get("/albums")
+export const sortByYear = (page) => async (dispatch) => {
+    const response = await api.get(`/albums/?sortBy=year`)
+    // const response = await api.get(`/albums/?sortBy=year&page=${page}`)
+    dispatch({
+        type: 'FETCH_ITEMS',
+        payload: response.data
+    })
+} 
+
+export const fetchItems = (page) => async (dispatch) => {
+    const response = await api.get(`/albums`)
+    // const response = await api.get(`/albums/?page=${page}`)
     dispatch({
         type: 'FETCH_ITEMS',
         payload: response.data

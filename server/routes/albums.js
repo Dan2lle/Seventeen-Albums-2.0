@@ -1,24 +1,50 @@
 // referenced from: https://www.youtube.com/watch?v=vjf774RKrLc&t=2093s
+// page pagination referenced from: https://www.youtube.com/watch?v=ja4yIn2pCzw
 
 var express = require('express');
 var router = express.Router();
 var Album = require('../model/Album');
 
+// const ITEMS_PER_PAGE = 4
+
 /* GET users listing. */
 router.get('/', async (req, res, next) => {
+  // const page = req.query.page || 1
+  // console.log(page)
+  // console.log(req.query.page)
+
+  // // to put query params
+  // const query = {}
+
   try {
-    const albumData = await Album.find({})
+    // const count = await Album.estimatedDocumentCount(query)
+    var albumData = await Album.find({})
+    // var albumData = await Album.find({}).skip(page * ITEMS_PER_PAGE).limit(ITEMS_PER_PAGE)
     if(req.query.sortBy) {
       if (req.query.sortBy === 'name') {
         console.log('sort by name')
-        albumData.sort((a, b) => a.album.localeCompare(b.album))
+        albumData = await Album.find({}).sort({ album: 1 })
+        // albumData = await Album.find({}).sort({ album: 1 }).skip(page * ITEMS_PER_PAGE).limit(ITEMS_PER_PAGE)
       } else if ((req.query.sortBy === 'price')) {
         console.log('sort by price')
-        albumData.sort((a, b) => a.price.localeCompare(b.price))
+        albumData = await Album.find({}).sort({ price: 1 })
+      } else if ((req.query.sortBy === 'year')) {
+        console.log('sort by year')
+        albumData = await Album.find({}).sort({ released: 1 })
       }
     }
+
+    // const pageCount = count / ITEMS_PER_PAGE
+
     console.log('no sort')
-    res.status(200).send(albumData);
+    // res.status(200).send({
+    //   pagination: {
+    //     count,
+    //     pageCount
+    //   },
+    //   albumData
+    // });
+    res.status(200).send(albumData)
   } catch (err) {
     console.log(err)
   }  
@@ -84,4 +110,4 @@ router.delete('/:albumId', async (req, res, next) => {
 
 module.exports = router;
 
-// able to load all, add one, delete one, update one, sort all
+// able to load all, add one, delete one, update one, sort all by name/price/year
