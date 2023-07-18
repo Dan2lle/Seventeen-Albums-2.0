@@ -1,0 +1,55 @@
+[{
+    "_id": {
+      "$oid": "64a363f7a5425635bb72889a"
+    },
+    "album": "17 CARAT",
+    "description": "1st mini album",
+    "title": "Adore U",
+    "price": "29",
+    "released": "2015",
+    "image": "https://upload.wikimedia.org/wikipedia/en/2/21/Seventeen-17_Carat_%28EP%29.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "64a363f7a5425635bb72889b"
+    },
+    "album": "BOYS BE",
+    "description": "2nd mini album",
+    "title": "Mansae",
+    "price": "27",
+    "released": "2015",
+    "image": "https://upload.wikimedia.org/wikipedia/en/d/dc/Boys_Be_EP.png"
+  },
+  {
+    "_id": {
+      "$oid": "64a363f7a5425635bb72889c"
+    },
+    "album": "LOVE&LETTER",
+    "description": "1st full album",
+    "title": "Pretty U",
+    "price": "35",
+    "released": "2016",
+    "image": "https://upload.wikimedia.org/wikipedia/en/d/de/Seventeen_-_Love_and_Letter.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "64a363f7a5425635bb72889d"
+    },
+    "album": "LOVE&LETTER Repackage",
+    "description": "1st repackage album",
+    "title": "Very Nice",
+    "price": "37",
+    "released": "2016",
+    "image": "https://upload.wikimedia.org/wikipedia/en/b/bf/Seventeen_-_Repackaged.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "64a363f7a5425635bb72889e"
+    },
+    "album": "Going Seventeen",
+    "description": "3rd mini album",
+    "title": "BoomBoom",
+    "price": "31",
+    "released": "2016",
+    "image": "https://upload.wikimedia.org/wikipedia/en/f/f5/Going_Seventeen_EP.jpg"
+  }]
