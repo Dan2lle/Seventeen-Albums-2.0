@@ -11,9 +11,13 @@ var indexRouter = require('./routes/index');
 var albumsRouter = require('./routes/albums');
 var cors = require('cors');
 
+const corsOptions = {
+    origin: "https://seventeen-albums-here.onrender.com", // frontend URI (ReactJS)
+}
+
 var app = express();
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
