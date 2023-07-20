@@ -7,8 +7,17 @@ import Home from './pages';
 import Main from './pages/main'
 import About from './pages/about';
 import Update from './pages/update';
+import { useEffect, useState } from "react";
  
 function App() {
+    const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    fetch("https://seventeen-albums-right-here.onrender.com")
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message));
+  },[]);
+
     return (
         <Router>
             <Navbar />
