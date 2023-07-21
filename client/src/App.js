@@ -12,11 +12,13 @@ import { useEffect, useState } from "react";
 function App() {
     const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    fetch("https://seventeen-albums-right-here.onrender.com")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
-  },[]);
+    useEffect(() => {
+        async function fetchData() {
+            await fetch("https://seventeen-albums-right-here.onrender.com")
+            .then((res) => res.json())
+            .then((data) => setMessage(data.message));
+        }
+    },[]);
 
     return (
         <Router>
