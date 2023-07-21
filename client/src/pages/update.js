@@ -17,7 +17,7 @@ const Update = () => {
         released: '',
         image: ''
     })
-    const baseURL = "http://localhost:3002"
+    const baseURL = "https://seventeen-albums-right-here.onrender.com/"
 
     useEffect(() => {
         axios.get(`${baseURL}/albums/${id}`)

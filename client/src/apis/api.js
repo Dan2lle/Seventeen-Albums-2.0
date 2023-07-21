@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "http://localhost:3002"
+    baseURL: "https://seventeen-albums-right-here.onrender.com/"
 })
