@@ -11,7 +11,7 @@ export default function Card(props) {
     const [isOpen, setIsOpen] = useState(false)
     const [album, setAlbum] = useState('')
     const dispatch = useDispatch()
-    const baseURL = "http://localhost:3002"
+    const baseURL = "https://seventeen-albums-right-here.onrender.com/"
 
     const removeHandler = (id) => {
         dispatch(removeItem(id))
