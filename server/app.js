@@ -13,6 +13,8 @@ var cors = require('cors');
 
 const corsOptions = {
     origin: "https://seventeen-albums-here.onrender.com", // frontend URI (ReactJS)
+    credentials: true,
+    optionsSuccessStatus: 200
 }
 
 var app = express();
