@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import '../components/Form.css';
 import { ButtonContainer } from "../components/styles/ButtonContainer.styled";
 import { Button } from "../components/styles/Button.styled";
+import { getBaseUrl } from "../apis/api";
  
 const Update = () => {
     const {id} = useParams()
@@ -17,7 +18,7 @@ const Update = () => {
         released: '',
         image: ''
     })
-    const baseURL = "https://seventeen-albums-right-here.onrender.com"
+    const baseURL = getBaseUrl()
 
     useEffect(() => {
         axios.get(`${baseURL}/albums/${id}`)

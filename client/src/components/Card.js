@@ -6,12 +6,13 @@ import { useState } from 'react';
 import { removeItem } from '../actions';
 import axios from 'axios';
 import { ButtonLink } from './navbar/NavBarElements';
+import { getBaseUrl } from '../apis/api';
 
 export default function Card(props) {
     const [isOpen, setIsOpen] = useState(false)
     const [album, setAlbum] = useState('')
     const dispatch = useDispatch()
-    const baseURL = "https://seventeen-albums-right-here.onrender.com"
+    const baseURL = getBaseUrl()
 
     const removeHandler = (id) => {
         dispatch(removeItem(id))

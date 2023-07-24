@@ -8,13 +8,14 @@ import Main from './pages/main'
 import About from './pages/about';
 import Update from './pages/update';
 import { useEffect, useState } from "react";
+import { getBaseUrl } from './apis/api';
  
 function App() {
     const [message, setMessage] = useState("");
 
     useEffect(() => {
         async function fetchData() {
-            await fetch("https://seventeen-albums-right-here.onrender.com")
+            await fetch(getBaseUrl())
             .then((res) => res.json())
             .then((data) => setMessage(data.message));
         }

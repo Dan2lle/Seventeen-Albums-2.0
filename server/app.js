@@ -11,15 +11,23 @@ var indexRouter = require('./routes/index');
 var albumsRouter = require('./routes/albums');
 var cors = require('cors');
 
-const corsOptions = {
-    origin: "https://seventeen-albums-here.onrender.com", // frontend URI (ReactJS)
-    credentials: true,
-    optionsSuccessStatus: 200
-}
-
 var app = express();
 
-app.use(cors(corsOptions));
+let url;
+switch(process.env.NODE_ENV) {
+    case 'development':
+        app.use(cors());
+        break;
+    case 'production':
+    default:
+        const corsOptions = {
+            origin: "https://seventeen-albums-here.onrender.com", // frontend URI (ReactJS)
+            credentials: true,
+            optionsSuccessStatus: 200
+        }
+        app.use(cors(corsOptions));
+}
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -38,6 +46,7 @@ const connectDB = async() => {
             useUnifiedTopology: true,
             useNewUrlParser: true
         })
+        console.log('connected to DB')
     } catch (err) {
         console.log(err)
     }
