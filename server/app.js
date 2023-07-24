@@ -16,12 +16,10 @@ var app = express();
 let url;
 switch(process.env.NODE_ENV) {
     case 'development':
-        console.log('dev')
         app.use(cors());
         break;
     case 'production':
     default:
-        console.log('prod')
         const corsOptions = {
             origin: "https://seventeen-albums-here.onrender.com", // frontend URI (ReactJS)
             credentials: true,
