@@ -15,6 +15,7 @@
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
+    "redux-mock-store": "^1.5.4",
     "styled-components": "^5.3.11",
     "web-vitals": "^2.1.4"
   },
@@ -30,6 +31,11 @@
       "react-app/jest"
     ]
   },
+  "jest": {
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -41,5 +47,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/redux-mock-store": "^1.0.3",
+    "react-test-renderer": "^18.2.0"
   }
 }
