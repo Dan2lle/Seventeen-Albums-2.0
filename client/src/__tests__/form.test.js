@@ -15,6 +15,10 @@ beforeEach(() => {
     )
 });
 
+afterEach(() => {
+    cleanup()
+})
+
 test('should render add button', () => { 
     const addButton = screen.getByText('Add Album')
     expect(addButton).toBeInTheDocument()
