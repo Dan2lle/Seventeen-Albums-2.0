@@ -16,6 +16,7 @@ var app = express();
 let url;
 switch(process.env.NODE_ENV) {
     case 'development':
+    case 'test':
         app.use(cors());
         break;
     case 'production':
