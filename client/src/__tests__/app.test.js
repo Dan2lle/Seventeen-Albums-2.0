@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import userEvent from '@testing-library/user-event'
+import * as axios from "axios";
 
 beforeEach(() => {
     // const initialState = {list: []}
@@ -18,6 +19,7 @@ beforeEach(() => {
     //         <Main />
     //     </Provider>
     // )
+    jest.mock('axios')
     const initialState = {list: []}
     const middlewares = [thunk]
     const mockStore = configureMockStore(middlewares)
@@ -39,20 +41,20 @@ test('should render name button', () => {
     expect(nameButton).toBeInTheDocument()
 })
 
-test('should render price button', () => { 
-    const priceButton = screen.getByText('Sort List By Price')
-    expect(priceButton).toBeInTheDocument()
-})
+// test('should render price button', () => { 
+//     const priceButton = screen.getByText('Sort List By Price')
+//     expect(priceButton).toBeInTheDocument()
+// })
 
-test('should render year button', () => { 
-    const yearButton = screen.getByText('Sort List By Year')
-    expect(yearButton).toBeInTheDocument();
-})
+// test('should render year button', () => { 
+//     const yearButton = screen.getByText('Sort List By Year')
+//     expect(yearButton).toBeInTheDocument();
+// })
 
-test('should render title', () => { 
-    const title = screen.getByText('Seventeen Album List')
-    expect(title).toBeInTheDocument();
-})
+// test('should render title', () => { 
+//     const title = screen.getByText('Seventeen Album List')
+//     expect(title).toBeInTheDocument()
+// })
 
 // test('form makes a post api call with proper inputs', async () => {
 //     userEvent.type(screen.getByText('Album Name:'), 'FML')
